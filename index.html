@@ -16,7 +16,7 @@
               <!-- budget setting -->
                 <div class="budget-container m-16 ">
                  <h1 class="font-bold text-2xl">Budget</h1>
-                 <p class="hide error" id="title-error">Values cannot be empty</p>
+                 <p class="hide error" id="tberror">Values cannot be empty</p>
                 <input type="number" class="mt-5" id="total" placeholder="Enter total amount">
                  <button class="budget-btn mt-10 items-center">Set Budget</button>
                 </div>
@@ -24,13 +24,14 @@
                  <!-- Expense -->
                 <div class="expense-container m-16">
                  <h1  class="font-bold text-2xl">Expenses</h1>
-                 <p class="hide error" id="title-error">Values cannot be empty</p>
-                  <input type="text"  class="mt-5" placeholder="Enter Title of the product">
-                 <input type="text" 
-                  class="mt-5" placeholder="Enter cost of the product">
+                 <p class="hide error" id="eerror">Values cannot be empty</p>
+                  <input type="text" id="product" class="mt-5" placeholder="Enter Title of the product">
+                  <p class="hide error" id="cerror">Values cannot be empty</p>
+                  <input type="text" 
+                  class="mt-5" id="user-amount" placeholder="Enter cost of the product">
                  <button class="check-btn mt-10 items-center">Check Amount</button>
                 </div>
-            </div>
+            </div> 
         <!-- output -->
             <div class="output flex justify-evenly ">
                 <div class="total">
