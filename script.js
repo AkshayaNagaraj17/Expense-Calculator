@@ -14,16 +14,16 @@ const tberror=document.getElementById("tberror")
 const eerror=document.getElementById("eerror")
 const cerror=document.getElementById("cerror")
 
-const list=document.querySelector(".list")
+const listContainer=document.querySelector(".list-container")
 let tempAmount=0
-
+let totalExpenses=0
 
 //Budget part
 
-check.addEventListener("click",() =>
+setBudget.addEventListener("click",() =>
 {
     tempAmount=Number(total.value);
-    if(isNaN(tempAmount) || tempAmount<=0)
+    if(isNaN(tempAmount) || tempAmount <= 0)
     {
         tberror.classList.remove("hide")
 
@@ -32,7 +32,35 @@ check.addEventListener("click",() =>
     {
         tberror.classList.add("hide")
         totalAmount.innerHTML=tempAmount;
-        balance.innerText=tempAmount-Number(expense.innerText)
+        balance.innerText=tempAmount-totalExpenses
         total.value=""
     }
 })
+
+//function to disable edit and delete button
+
+const disableButtons=(bool) =>
+{
+    let editButtons=document.getElementsByClassName("edit")
+    Array.from(editButtons).forEach((element)=>
+    {
+        element.disabled=bool
+    })
+}
+
+const modifyElement=(element,edit=false) =>
+{
+   let parentDiv =element.parentElement 
+   let currentBalance=balance.innerText
+   let currentExpense=expense.innerText
+   let parentAmount =parentDiv.querySelector(".amount").innerText
+   if(edit)
+   {
+    let parentText=parentDiv.querySelector(".product").innerText
+    product.value=parentText
+    tempAmount.value=parentAmount
+    disableButtons(true)
+   }
+   balance.innerText=parseInt(currentBalance)+parseInt(parentAmount)
+   expense.innerText=parseInt(currentExpense)-parseInt(parentAmount)
+}
