@@ -1,0 +1,70 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: antiquewhite;
+}
+
+.container1{
+        width:100%
+}
+
+.container{
+    
+        width:100%;
+
+}
+.subcontainer{
+    
+    align-items: center;
+    width: 100%;
+    background-color: rgb(165, 243, 217);
+}
+input{
+   
+    display: block;
+    background: transparent;
+    outline:none;
+   
+    border-bottom: 1px solid gray;
+}
+.budget-btn,.check-btn{
+    background-color: rgb(172, 190, 222);
+    border-radius: 10px;
+    border:1px sild white;
+    padding:5px;
+    cursor: pointer;
+}
+
+.budget-container,.expense-container{
+    padding:5px;
+    border:1px solid gray;
+    border-radius: 0.3em;
+    box-shadow: 10px 10px 5px 2px rgb(0, 28, 37);
+}
+
+.output{
+    background-color:  rgb(172, 190, 222);;
+    color: black;
+    margin:15px;
+    padding: 7px;;
+   
+}   
+.output p{
+    margin-bottom:20px;
+    font-weight: 500;
+}
+.output span{
+    display: block;
+    text-align: center;
+    font-weight: 400;
+
+}
+.list{
+    background-color:  rgb(169, 251, 224);;
+    padding:10px;
+    margin:15px;
+}
