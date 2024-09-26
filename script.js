@@ -64,3 +64,11 @@ const modifyElement=(element,edit=false) =>
    balance.innerText=parseInt(currentBalance)+parseInt(parentAmount)
    expense.innerText=parseInt(currentExpense)-parseInt(parentAmount)
 }
+
+
+//Function to create list
+const listcreator=(expenseName,expenseValue)=>
+{
+    let subList=createElement("div")
+    
+}
