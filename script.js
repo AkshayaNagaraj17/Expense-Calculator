@@ -67,8 +67,30 @@ const modifyElement=(element,edit=false) =>
 
 
 //Function to create list
-const listcreator=(expenseName,expenseValue)=>
-{
-    let subList=createElement("div")
-    
-}
+const listCreator = (expenseName, expenseValue) => {
+    let sublistContent = document.createElement("div");
+    sublistContent.classList.add("sublist-content", "flex-space");
+  
+    sublistContent.innerHTML = `
+      <p class="product">${expenseName}</p>
+      <p class="amount">${expenseValue}</p>`;
+  
+    let editButton = document.createElement("button");
+    editButton.classList.add("fa-solid", "fa-pen-to-square", "edit");
+    editButton.style.fontSize = "1.2em";
+    editButton.addEventListener("click", () => {
+      modifyElement(editButton, true);
+    });
+  
+    let deleteButton = document.createElement("button");
+    deleteButton.classList.add("fa-solid", "fa-trash-can", "delete");
+    deleteButton.style.fontSize = "1.2em";
+    deleteButton.addEventListener("click", () => {
+      deleteExpense(deleteButton);
+    });
+  
+    sublistContent.appendChild(editButton);
+    sublistContent.appendChild(deleteButton);
+  
+    listContainer.appendChild(sublistContent); // Append to the correct container
+  };
