@@ -94,3 +94,57 @@ const listCreator = (expenseName, expenseValue) => {
   
     listContainer.appendChild(sublistContent); // Append to the correct container
   };
+  check.addEventListener("click", () => {
+    // Empty checks
+    if (!userAmount.value || !product.value) {
+        if (!userAmount.value) eerror.classList.remove("hide");
+        if (!product.value) cerror.classList.remove("hide");
+        return false;
+    } else {
+        eerror.classList.add("hide");
+        cerror.classList.add("hide");
+    }
+
+    // Enable buttons
+    disableButtons(false);
+
+    // Expense
+    let expenditure = parseFloat(userAmount.value);
+
+    // Check for negative expenditure
+    if (expenditure < 0) {
+        alert("Amount cannot be negative.");
+        return false;
+    }
+
+    // Total expense (existing + new)
+    totalExpenses += expenditure;
+    expense.innerText = totalExpenses.toFixed(2);
+
+    // Total balance (budget - total expense)
+    const totalBalance = tempAmount - totalExpenses;
+    balance.innerText = totalBalance.toFixed(2);
+
+    // Create list
+    listCreator(product.value, expenditure.toFixed(2));
+
+    // Empty inputs
+    product.value = "";
+    userAmount.value = "";
+});
+
+// Function to delete an expense
+const deleteExpense = (element) => {
+    let parentDiv = element.parentElement;
+    let parentAmount = parseFloat(parentDiv.querySelector(".amount").innerText);
+    
+    // Update totals
+    totalExpenses -= parentAmount;
+    expense.innerText = totalExpenses.toFixed(2);
+
+    let currentBalance = parseFloat(balance.innerText);
+    balance.innerText = (currentBalance + parentAmount).toFixed(2);
+    
+    // Remove the sublist content
+    listContainer.removeChild(parentDiv);
+};
